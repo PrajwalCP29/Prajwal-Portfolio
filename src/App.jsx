@@ -7,10 +7,15 @@
 import React from "react";
 
 import About from "./Components/About";
+import Education from "./Components/Education";
+import Skills from "./Components/Skills";
+import Certifications from "./Components/Certifications";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Portfolio from "./Components/Portfolio";
+import ScrollProgressIndicator from "./Components/ScrollProgressIndicator";
+import DarkModeToggle from "./Components/DarkModeToggle";
 
 import "./styles.css";
 
@@ -24,28 +29,34 @@ import "./styles.css";
  * If you don't have one of the social sites listed, leave it as an empty string.
  */
 const siteProps = {
-  name: "Alexandrie Grenier",
-  title: "Web Designer & Content Creator",
-  email: "alex@example.com",
-  gitHub: "microsoft",
-  instagram: "microsoft",
-  linkedIn: "satyanadella",
+  name: "Prajwal Parihar",
+  title: "Data Science Student | Python Developer & AI/ML Enthusiast",
+  email: "prajwalparihar292003@gmail.com",
+  phone: "+91-9356959051",
+  gitHub: "PrajwalCP29",
+  instagram: "",
+  linkedIn: "prajwalparihar",
   medium: "",
-  twitter: "microsoft",
-  youTube: "Code",
+  twitter: "",
+  youTube: "",
 };
 
-const primaryColor = "#4E567E";
-const secondaryColor = "#D2F1E4";
+const primaryColor = "#2563EB";
+const secondaryColor = "#F0F4F8";
 
 const App = () => {
   return (
     <div id="main">
+      <ScrollProgressIndicator />
       <Header />
       <Home name={siteProps.name} title={siteProps.title} />
       <About />
+      <Skills />
+      <Education />
       <Portfolio />
+      <Certifications />
       <Footer {...siteProps} primaryColor={primaryColor} secondaryColor={secondaryColor} />
+      <DarkModeToggle />
     </div>
   );
 };

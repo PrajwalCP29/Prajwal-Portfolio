@@ -1,83 +1,176 @@
 /**
- * About component
+ * Modern About component
  *
- * Space for you to describe more about yourself.
+ * Professional overview with glassmorphism card design and smooth animations
  */
 
 import React from "react";
 
-/**
- * About background image
- *
- * Below is a sample image. Upload the image of your choice into the "images"
- * directory and import here for use. Then, set imageAltText to string that 
- * represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a image you
- * freely use on your site.
- */
-import image from "../images/motion-background.jpg";
+const imageAltText = "Tech professional workspace";
 
-const imageAltText = "purple and blue abstract background";
-
-/**
- * Sort description that expands on your title on the Home component.
- */
 const description =
-  "I'm a UI/UX student studying at Barnett Technical University. I enjoy creating unique and simplistic user interfaces in creative ways.";
+  "B.Tech. Data Science student at G.H. Raisoni College of Engineering, Nagpur (CGPA: 8.27/10). Skilled in Python, SQL, and C++ with expertise in AI/ML, data visualization, and cloud technologies. I'm passionate about leveraging data science to solve real-world problems and create intelligent solutions.";
 
-/**
- * List of some of skills or technologies you work on, are learning,
- * passionate about, or enjoy,
- */
 const skillsList = [
-  "Web design",
-  "User experience",
-  "Inclusive design",
-  "Focus group testing",
-  "Mobile user interfaces",
-  "Graphic design",
+  "Python & C++",
+  "SQL & NoSQL Databases",
+  "Machine Learning & AI",
+  "Data Visualization (Power BI, Tableau)",
+  "AWS Cloud Technologies",
+  "Web Development (HTML, CSS, JS)",
 ];
 
-/**
- * Use this to give more information about what you are passionate about,
- * how you best work, or even a quote. This will help someone learn more
- * about you on a professional level.
- */
 const detailOrQuote =
-  "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my UI/UX experience I continually look for new and better ways to make tech accessible by all.";
+  "I'm passionate about problem-solving, collaboration, and quickly learning new technologies. My strength lies in combining data analysis with software development to create impactful AI/ML solutions that drive innovation and deliver measurable results.";
 
 const About = () => {
   return (
-    <section className="padding" id="about">
-      <img className="background" src={image} alt={imageAltText} />
+    <section
+      className="padding"
+      id="about"
+      style={{
+        position: "relative",
+        background: "linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%)",
+      }}
+    >
+      {/* Tech Pattern Background */}
       <div
         style={{
-          backgroundColor: "white",
-          width: "50%",
-          padding: "4rem",
-          margin: "3rem auto",
-          textAlign: "center",
+          position: "absolute",
+          inset: 0,
+          opacity: 0.05,
+          backgroundImage: `
+            repeating-linear-gradient(
+              90deg,
+              #2563EB 0px,
+              #2563EB 2px,
+              transparent 2px,
+              transparent 20px
+            )
+          `,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Content Container */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "0 2rem",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        <h2>About Myself</h2>
-        <p className="large">{description}</p>
-        <hr />
-        <ul
+        <div
+          className="glass-card animate-fade-in"
           style={{
-            textAlign: "left",
-            columns: 2,
-            fontSize: "1.25rem",
-            margin: "2rem 3rem",
-            gap: "3rem",
+            width: "100%",
+            maxWidth: "900px",
+            padding: "4rem",
+            margin: "0 auto",
+            backgroundColor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            borderRadius: "20px",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
           }}
         >
-          {skillsList.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
-        <hr />
-        <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
+          <h2
+            style={{
+              textAlign: "center",
+              marginBottom: "2rem",
+              color: "#1F2937",
+              fontSize: "2.25rem",
+              fontWeight: "500",
+            }}
+          >
+            About Myself
+          </h2>
+
+          <p
+            className="large"
+            style={{
+              textAlign: "center",
+              color: "#374151",
+              lineHeight: "1.8",
+              marginBottom: "2rem",
+              fontSize: "1.125rem",
+            }}
+          >
+            {description}
+          </p>
+
+          <hr style={{ margin: "2.5rem" }} />
+
+          {/* Skills List */}
+          <div style={{ marginBottom: "2.5rem" }}>
+            <h3
+              style={{
+                marginBottom: "1.5rem",
+                color: "#1F2937",
+                textAlign: "center",
+              }}
+            >
+              Key Skills
+            </h3>
+            <ul
+              style={{
+                textAlign: "center",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "1rem",
+                margin: 0,
+                padding: 0,
+                listStyle: "none",
+              }}
+              className="animate-fade-in-stagger"
+            >
+              {skillsList.map((skill, index) => (
+                <li
+                  key={skill}
+                  style={{
+                    padding: "0.75rem 1rem",
+                    background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%)",
+                    borderRadius: "8px",
+                    fontWeight: "500",
+                    color: "#2563EB",
+                    borderLeft: "3px solid #2563EB",
+                    transition: "all 0.3s ease",
+                    animation: `fadeInUp 0.6s ease-out ${0.1 * index}s both`,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateX(5px)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 99, 235, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateX(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <hr style={{ margin: "2.5rem" }} />
+
+          <p
+            style={{
+              padding: "1rem",
+              textAlign: "center",
+              color: "#4B5563",
+              fontStyle: "italic",
+              lineHeight: "1.8",
+              borderLeft: "4px solid #F59E0B",
+              paddingLeft: "1.5rem",
+              animation: "fadeInUp 0.8s ease-out 0.4s both",
+            }}
+          >
+            "{detailOrQuote}"
+          </p>
+        </div>
       </div>
     </section>
   );
